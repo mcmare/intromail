@@ -1,0 +1,9 @@
+{
+  "name": "intromail-plugin",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  }
+}
