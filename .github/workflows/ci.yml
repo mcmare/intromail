@@ -29,3 +29,17 @@ jobs:
           python3 scripts/install.py upstream --dry-run
           python3 scripts/install.py upstream
           python3 scripts/install.py upstream --dry-run
+      - name: Install backend dependencies
+        working-directory: upstream/backend
+        run: npm ci
+      - name: Validate plugin API boundary
+        working-directory: upstream/backend
+        run: npm run lint:plugins
+      - name: Install frontend dependencies
+        working-directory: upstream/frontend
+        env:
+          ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+        run: npm ci
+      - name: Build MailFlow frontend with IntroMail
+        working-directory: upstream/frontend
+        run: npm run build
